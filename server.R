@@ -103,7 +103,9 @@ shinyServer(function(input, output){
         points(obs_vec[player==i],time_vec[player==i],
                col=makeTransparent(j),lwd=4,cex=2)
       }
+
       ## text(24,.17,expression("Time(s)="*sqrt(("Dist(in)*0.0254*(m/in)*2")/(9.8*"(m/s"^2*")"))))
+      
       text(20,.1,
            expression("Dist(in)=0.5*39.27(in/m)*9.8(m/s"^2*")*Time(s)"^2),
            cex=2)
@@ -201,19 +203,16 @@ shinyServer(function(input, output){
             ## unique(player)[j1*p1_win+j2*(1-p1_win)],
             ## " reacts faster on average than ",
             ## unique(player)[j1*(1-p1_win)+j2*p1_win]),cex=2)
-       }
-     }
-     axis(1,at=1:k,labels=lab,cex.axis=2,line=2,lwd=0)
+          }
+        }
+        axis(1,at=1:k,labels=lab,cex.axis=2,line=2,lwd=0)
      
-    }   
-  }
-  
-   else{  ## If no observations have been entered, display message
+      }
+    } else {  ## If no observations have been entered, display message
    
-     plot(NULL,NULL,xlim=0:1,ylim=0:1,xlab="",ylab="",xaxt="n",yaxt="n")
-     text(.5,.5,"Please enter measurements",cex=2)
-   } 
+      plot(NULL,NULL,xlim=0:1,ylim=0:1,xlab="",ylab="",xaxt="n",yaxt="n")
+      text(.5,.5,"Please enter measurements",cex=2)
+    }
     
   }, width = 72*15, height = 72*15)
-  
 })
