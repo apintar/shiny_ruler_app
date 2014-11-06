@@ -61,10 +61,10 @@ shinyUI(fluidPage(
                                 sliderInput(inputId = "p1_obs6",
                                             min=0,max=30,value=0,step=0.25,
                                             label = NULL),
-
+                                
                                 conditionalPanel(
 
-                                    condition="input.p1_obs7>0",
+                                    condition="input.p1_obs6>0",
                                     sliderInput(inputId = "p1_obs7",
                                                 min=0,max=30,value=0,step=0.25,
                                                 label = NULL))))))),
@@ -123,7 +123,7 @@ shinyUI(fluidPage(
                                                 label = NULL),
                                     conditionalPanel(
 
-                                        condition="input.p2_obs7>0",
+                                        condition="input.p2_obs6>0",
                                         sliderInput(inputId = "p2_obs7",
                                                     min=0,max=30,value=0,step=0.25,
                                                     label = NULL)))))))),
@@ -186,7 +186,7 @@ shinyUI(fluidPage(
                                     
                                     conditionalPanel(
 
-                                        condition="input.p3_obs7>0",
+                                        condition="input.p3_obs6>0",
                                         sliderInput(inputId = "p3_obs7",
                                                     min=0,max=30,value=0,step=0.25,
                                                     label = NULL)))))))),
@@ -247,14 +247,21 @@ shinyUI(fluidPage(
                                                 label = NULL),
                                     
                                     conditionalPanel(
-                                        condition="input.p4_obs7>0",
+                                        condition="input.p4_obs6>0",
                                         sliderInput(inputId = "p4_obs7",
                                                     min=0,max=30,value=0,step=0.25,
                                                     label = NULL)))))))),
             
+            
+            actionButton("update", "Update"),
+
+            br(),
+            br(),
+            br(),
             br(),
             
-            actionButton("update", "Update")),
+            textInput(inputId = "record_observation",
+                      label = "Record Observation")),
         
         mainPanel(
             

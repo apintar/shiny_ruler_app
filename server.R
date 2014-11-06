@@ -11,7 +11,7 @@ makeTransparent <- function(someColor, alpha = 100) {
   })
 }
 
-shinyServer(function(input, output){
+shinyServer(function(input, output, session){
   
   output$scatter_plot1 <- renderPlot({
     
@@ -215,4 +215,113 @@ shinyServer(function(input, output){
     }
     
   }, width = 72*15, height = 72*15)
+
+  observe({
+
+    if (input$n_play == 1) {
+
+      for (i in 2:4) {
+        
+        updateTextInput(session,
+                        inputId = paste0("p", i, "_name"),
+                        value = "")
+        updateSelectInput(session,
+                          inputId = paste0("p", i, "_gender"),
+                          selected = 1)
+        updateSelectInput(session,
+                          inputId = paste0("p", i, "_age"),
+                          selected = 1)
+
+        for (j in 1:7) {
+          
+          updateSliderInput(session,
+                            inputId = paste0("p", i, "_obs", j),
+                            value = 0)
+        }
+      }
+    }
+
+    if (input$n_play == 2) {
+
+      for (i in 3:4) {
+        
+        updateTextInput(session,
+                        inputId = paste0("p", i, "_name"),
+                        value = "")
+        updateSelectInput(session,
+                          inputId = paste0("p", i, "_gender"),
+                          selected = 1)
+        updateSelectInput(session,
+                          inputId = paste0("p", i, "_age"),
+                          selected = 1)
+
+        for (j in 1:7) {
+          
+          updateSliderInput(session,
+                            inputId = paste0("p", i, "_obs", j),
+                            value = 0)
+        }
+      }
+    }
+
+    if (input$n_play == 3) {
+
+      for (i in 4:4) {
+        
+        updateTextInput(session,
+                        inputId = paste0("p", i, "_name"),
+                        value = "")
+        updateSelectInput(session,
+                          inputId = paste0("p", i, "_gender"),
+                          selected = 1)
+        updateSelectInput(session,
+                          inputId = paste0("p", i, "_age"),
+                          selected = 1)
+
+        for (j in 1:7) {
+          
+          updateSliderInput(session,
+                            inputId = paste0("p", i, "_obs", j),
+                            value = 0)
+        }
+      }
+    }
+
+    if (input$record_observation == "el") {
+
+      updateSelectInput(session,
+                        inputId = "n_play",
+                        selected = 1)
+
+      for (i in 1:4) {
+        
+        updateTextInput(session,
+                        inputId = paste0("p", i, "_name"),
+                        value = "")
+        updateSelectInput(session,
+                          inputId = paste0("p", i, "_gender"),
+                          selected = 1)
+        updateSelectInput(session,
+                          inputId = paste0("p", i, "_age"),
+                          selected = 1)
+
+        for (j in 1:7) {
+          
+          updateSliderInput(session,
+                            inputId = paste0("p", i, "_obs", j),
+                            value = 0)
+        }
+      }
+
+      output$scatter_plot1 <- renderPlot({
+        
+        plot(NULL,NULL,xlim=0:1,ylim=0:1,xlab="",ylab="",xaxt="n",yaxt="n")
+        text(.5,.5,"Please enter measurements",cex=2)
+      }, width = 72*15, height = 72*15)
+        
+      updateTextInput(session,
+                      inputId = "record_observation",
+                      value = "")
+    }
+  })
 })
