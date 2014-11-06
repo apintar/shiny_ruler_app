@@ -253,17 +253,20 @@ shinyUI(fluidPage(
                                                     label = NULL)))))))),
             
             
-            actionButton("update", "Update"),
+            actionButton("update", "Update Graphs"),
 
             br(),
             br(),
             br(),
             br(),
-            
+
             textInput(inputId = "record_observation",
-                      label = "Record Observation")),
+                      label = "Record Observation")
+        ),
         
         mainPanel(
             
-            h3("Results"),
-            plotOutput("scatter_plot1")))))
+            h3("Results For Current Players"),
+            plotOutput("scatter_plot1", height = 13*72, width = 13*72),
+            h3("Player's Comparison to History"),
+            plotOutput("scatter_plot2")))))
