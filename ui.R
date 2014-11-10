@@ -267,6 +267,6 @@ shinyUI(fluidPage(
         mainPanel(
             
             h3("Results For Current Players"),
-            plotOutput("scatter_plot1", height = 13*72, width = 13*72),
+            plotOutput("scatter_plot1", height = 13*72),
             h3("Player's Comparison to History"),
             plotOutput("scatter_plot2")))))
